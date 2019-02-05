@@ -1,0 +1,10 @@
+1. Make a new Java EE project
+2. Go to Run
+3. Add now configuration + button
+4. Select Glassfish server
+5. Direct to payara5 folder
+6. Set domain "Default = domain1" 
+7. Go to deployment
+8. Add war file of the project
+9. Press ok and the payara server is added to you project.
+10. Next you need to configure the payara server.....
