@@ -1,2 +1,2 @@
 # 2019JEA
-Java EE - application like polarsteps
+Java EE - TripJournal
