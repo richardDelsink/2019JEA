@@ -1,3 +1,5 @@
+Tested with First Cup of Jakarta EE Tutorial
+
 1. Make a new Java EE project
 2. Go to Run
 3. Add now configuration + button
