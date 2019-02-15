@@ -1,7 +1,15 @@
 package domain;
 
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "Message")
+@NamedQueries({@NamedQuery(name = "",query = "")})
 public class Message {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String messageId;
     private int userId;
     private String comment;

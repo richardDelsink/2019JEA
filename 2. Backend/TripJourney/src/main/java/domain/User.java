@@ -1,8 +1,16 @@
 package domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "User")
+@NamedQueries({@NamedQuery(name = "",query = "")})
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name="photo")
     private String photo;
     private String firstname;
     private String lastname;
@@ -17,8 +25,19 @@ public class User {
 
     private String password;
 
-    public User() {
-
+    public User(int id, String photo, String firstname, String lastname, String city, String about, String email, String personalLink, Boolean privacy, String distance, String temperature, String password) {
+        this.id = id;
+        this.photo = photo;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.city = city;
+        this.about = about;
+        this.email = email;
+        this.personalLink = personalLink;
+        this.privacy = privacy;
+        this.distance = distance;
+        this.temperature = temperature;
+        this.password = password;
     }
 
     public int getId() {
