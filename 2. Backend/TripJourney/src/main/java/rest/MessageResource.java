@@ -2,6 +2,6 @@ package rest;
 
 import javax.ws.rs.Path;
 
-@Path("Message")
+@Path("Comment")
 public class MessageResource {
 }

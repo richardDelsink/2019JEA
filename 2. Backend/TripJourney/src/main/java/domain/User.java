@@ -2,18 +2,16 @@ package domain;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "User")
-@NamedQueries({@NamedQuery(name = "",query = "")})
+//@Entity
+//@Table(name = "User")
+//@NamedQueries({@NamedQuery(name = "",query = "")})
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @Id
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name="photo")
     private String photo;
-    private String firstname;
-    private String lastname;
+    private String name;
     private String city;
     private String about;
 
@@ -25,11 +23,10 @@ public class User {
 
     private String password;
 
-    public User(int id, String photo, String firstname, String lastname, String city, String about, String email, String personalLink, Boolean privacy, String distance, String temperature, String password) {
+    public User(int id, String photo, String name, String city, String about, String email, String personalLink, Boolean privacy, String distance, String temperature, String password) {
         this.id = id;
         this.photo = photo;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.name = name;
         this.city = city;
         this.about = about;
         this.email = email;
@@ -56,20 +53,12 @@ public class User {
         this.photo = photo;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCity() {

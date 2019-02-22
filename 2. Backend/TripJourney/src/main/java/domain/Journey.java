@@ -10,14 +10,16 @@ public class Journey {
     private LocalDate startDatel;
     private LocalDate endDate;
     private String whoCanSee;
+    private int userId;
 
-    public Journey(int journeyId, String journeyName, String journeySummary, LocalDate startDatel, LocalDate endDate, String whoCanSee) {
+    public Journey(int journeyId, String journeyName, String journeySummary, LocalDate startDatel, LocalDate endDate, String whoCanSee, int userId) {
         this.journeyId = journeyId;
         this.journeyName = journeyName;
         this.journeySummary = journeySummary;
         this.startDatel = startDatel;
         this.endDate = endDate;
         this.whoCanSee = whoCanSee;
+        this.userId = userId;
     }
 
     public int getJourneyId() {
@@ -66,5 +68,13 @@ public class Journey {
 
     public void setWhoCanSee(String whoCanSee) {
         this.whoCanSee = whoCanSee;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

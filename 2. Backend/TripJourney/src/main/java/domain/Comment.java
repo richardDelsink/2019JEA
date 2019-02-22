@@ -3,29 +3,30 @@ package domain;
 import javax.persistence.*;
 
 
-@Entity
-@Table(name = "Message")
-@NamedQueries({@NamedQuery(name = "",query = "")})
-public class Message {
+//@Entity
+//@Table(name = "Comment")
+//@NamedQueries({@NamedQuery(name = "",query = "")})
+public class Comment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String messageId;
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String commentId;
+    private int journeyId;
     private int userId;
     private String comment;
 
-    public Message(String messageId, int userId, String comment) {
-        this.messageId = messageId;
+    public Comment(String messageId, int userId, String comment) {
+        this.commentId = messageId;
         this.userId = userId;
         this.comment = comment;
     }
 
     public String getMessageId() {
-        return messageId;
+        return commentId;
     }
 
     public void setMessageId(String messageId) {
-        this.messageId = messageId;
+        this.commentId = messageId;
     }
 
     public int getUserId() {

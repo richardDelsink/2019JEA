@@ -3,34 +3,30 @@ package domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Blog {
+public class Step {
 
-    private int blogId;
+    private int stepId;
     private String location;
     private String stepName;
     private LocalDateTime arrivalTime;
     private String story;
-    private List<String> photo;
-    private List<String> comment;
     private int like;
 
-    public Blog(int blogId, String location, String stepName, LocalDateTime arrivalTime, String story, List<String> photo, List<String> comment, int like) {
-        this.blogId = blogId;
+    public Step(int stepId, String location, String stepName, LocalDateTime arrivalTime, String story, int like) {
+        this.stepId = stepId;
         this.location = location;
         this.stepName = stepName;
         this.arrivalTime = arrivalTime;
         this.story = story;
-        this.photo = photo;
-        this.comment = comment;
         this.like = like;
     }
 
-    public int getBlogId() {
-        return blogId;
+    public int getStepId() {
+        return stepId;
     }
 
-    public void setBlogId(int blogId) {
-        this.blogId = blogId;
+    public void setStepId(int stepId) {
+        this.stepId = stepId;
     }
 
     public String getLocation() {
@@ -63,22 +59,6 @@ public class Blog {
 
     public void setStory(String story) {
         this.story = story;
-    }
-
-    public List<String> getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(List<String> photo) {
-        this.photo = photo;
-    }
-
-    public List<String> getComment() {
-        return comment;
-    }
-
-    public void setComment(List<String> comment) {
-        this.comment = comment;
     }
 
     public int getLike() {
