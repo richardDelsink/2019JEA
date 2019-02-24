@@ -86,4 +86,9 @@ public class UserDaoJpa implements UserDao{
         List<User> result = query.getResultList();
         return result.get(0);
     }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
 }
