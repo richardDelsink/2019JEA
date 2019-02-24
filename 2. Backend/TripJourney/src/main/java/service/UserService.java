@@ -1,33 +1,92 @@
 package service;
 
-import dao.GenericInterface;
 import dao.JPA;
+import dao.UserDao;
 import domain.User;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.NotFoundException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.List;
 
 @Stateless
 public class UserService {
 
-    @Inject
-    private GenericInterface<User> genericDao;
+    @Inject @JPA
+    private UserDao userDao;
 
     public void addUser(User user) {
-        genericDao.add(user);
+        userDao.add(user);
     }
 
     public void removeUser(User user){
-        genericDao.remove(user);
+        userDao.remove(user);
     }
 
     public void removeUser(String name) {
-        User user = findByName(name);
-        genericDao.remove(user);
+        User user = userDao.findByName(name);
+        userDao.remove(user);
     }
 
     public User findByName(String name){
-        return genericDao.findByName(name);
+        return userDao.findByName(name);
+    }
+
+    public List<User> getFollowing(String username)throws NotFoundException{
+        User user = userDao.findByName(username);
+
+        if (user == null) {
+            throw new NotFoundException("User " + username + " was not found");
+        }
+
+        return user.getFollowing();
+    }
+    public List<User> getFollowers(String name) throws NotFoundException {
+
+        User user = userDao.findByName(name);
+
+        if (user == null) {
+            throw new NotFoundException("User " + name + " was not found");
+        }
+
+        return userDao.getFollowers(user);
+    }
+
+    public void followUser(User user, String username)throws NotFoundException {
+        User toFollow = userDao.findByName(username);
+
+        if (toFollow == null) {
+            throw new NotFoundException("User " + username + " was not found");
+        }
+
+        userDao.followUser(user, toFollow);
+    }
+    public void unfollowUser(User user, String username)throws NotFoundException{
+        User toUnfollow = userDao.findByName(username);
+
+        if (toUnfollow == null) {
+            throw new NotFoundException("User " + username + " was not found");
+        }
+
+        userDao.unfollowUser(user, toUnfollow);
+    }
+    public boolean login(String username, String password){
+        return userDao.login(username, generateSha256(password));
+    }
+
+    public String generateSha256(String text) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(text.getBytes(StandardCharsets.UTF_8));
+
+            return Base64.getEncoder().encodeToString(hash);
+        } catch (NoSuchAlgorithmException e) {
+            return text;
+        }
     }
     public UserService(){
 

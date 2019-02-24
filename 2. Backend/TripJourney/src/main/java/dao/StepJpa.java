@@ -1,4 +1,72 @@
 package dao;
 
-public class StepJpa {
+import domain.Journey;
+import domain.Step;
+import domain.User;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
+
+@Stateless
+@JPA
+public class StepJpa implements StepDao{
+
+    @PersistenceContext(unitName = "stepPU")
+    private EntityManager em;
+
+    public StepJpa() {
+    }
+
+    @Override
+    public List<Step> getStepByJourney(Journey journey) {
+        TypedQuery<Step> query = em.createNamedQuery("step.getStepsByJourney", Step.class);
+        query.setParameter("journey", journey);
+        return query.getResultList();
+    }
+
+    @Override
+    public Step likeStep(Step s, User u) {
+        s.addLike(u);
+        em.merge(s);
+        return s;
+    }
+
+    @Override
+    public Step unlikeStep(Step s, User u) {
+        s.removeLike(u);
+        em.merge(s);
+        return s;
+    }
+
+    @Override
+    public Step findStepById(int id) {
+
+        return em.find(Step.class, id);
+    }
+
+    @Override
+    public void add(Step step) {
+        em.persist(step);
+    }
+
+    @Override
+    public void remove(Step step) {
+        em.remove(em.merge(step));
+    }
+
+    @Override
+    public void update(Step step) {
+        em.merge(step);
+    }
+
+    @Override
+    public Step findByName(String name) {
+        TypedQuery<Step> query = em.createNamedQuery("step.findByName", Step.class);
+        query.setParameter("name", name);
+        List<Step> result = query.getResultList();
+        return result.get(0);
+    }
 }

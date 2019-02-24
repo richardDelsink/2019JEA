@@ -1,4 +1,5 @@
 package service;
+import dao.JPA;
 import domain.User;
 
 import javax.annotation.PostConstruct;

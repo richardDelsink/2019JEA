@@ -1,22 +1,36 @@
 package domain;
 
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
-public class Journey {
+@Entity
+@Table(name = "Journey")
+@NamedQueries({
+        @NamedQuery(name = "journey.getJourneyByUser", query = "SELECT j FROM Journey j WHERE j.userId = :userId"),
+        @NamedQuery(name = "journey.journey.findByName", query = "SELECT j FROM Journey j WHERE j.journeyName = :name")
+       })
 
+@XmlRootElement
+public class Journey implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int  journeyId;
     private String journeyName;
     private String journeySummary;
-    private LocalDate startDatel;
+    private Date startDate;
     private LocalDate endDate;
     private String whoCanSee;
     private int userId;
 
-    public Journey(int journeyId, String journeyName, String journeySummary, LocalDate startDatel, LocalDate endDate, String whoCanSee, int userId) {
+    public Journey(int journeyId, String journeyName, String journeySummary, Date startDate, LocalDate endDate, String whoCanSee, int userId) {
         this.journeyId = journeyId;
         this.journeyName = journeyName;
         this.journeySummary = journeySummary;
-        this.startDatel = startDatel;
+        this.startDate = startDate;
         this.endDate = endDate;
         this.whoCanSee = whoCanSee;
         this.userId = userId;
@@ -46,12 +60,12 @@ public class Journey {
         this.journeySummary = journeySummary;
     }
 
-    public LocalDate getStartDatel() {
-        return startDatel;
+    public Date getStartDatel() {
+        return startDate;
     }
 
-    public void setStartDatel(LocalDate startDatel) {
-        this.startDatel = startDatel;
+    public void setStartDatel(Date startDate) {
+        this.startDate = startDate;
     }
 
     public LocalDate getEndDate() {

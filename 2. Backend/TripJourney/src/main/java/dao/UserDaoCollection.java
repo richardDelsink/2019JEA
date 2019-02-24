@@ -4,11 +4,12 @@ import domain.User;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Stateless
 @Default
-public class UserDaoCollection implements GenericInterface<User>{
+public class UserDaoCollection implements UserDao{
 
     CopyOnWriteArrayList<User> users = new CopyOnWriteArrayList<>();
 
@@ -39,6 +40,31 @@ public class UserDaoCollection implements GenericInterface<User>{
                 users.set(users.indexOf(user),user);
             }
         }
+    }
+
+    @Override
+    public List<User> getFollowers(User user) {
+        return user.getFollowing();
+    }
+
+    @Override
+    public void followUser(User user, User toFollow) {
+        user.followUser(toFollow);
+    }
+
+    @Override
+    public void unfollowUser(User user, User toUnfollow) {
+        user.unfollowUser(toUnfollow);
+    }
+
+    @Override
+    public boolean login(String username, String password) {
+        for (User u : users) {
+            if (u.getName() == username && u.getPassword() == password) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public UserDaoCollection(){

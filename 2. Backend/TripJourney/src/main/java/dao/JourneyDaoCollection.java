@@ -1,14 +1,17 @@
 package dao;
 
 import domain.Journey;
+import domain.User;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Stateless
 @Default
-public class JourneyDaoCollection implements GenericInterface<Journey>{
+public class JourneyDaoCollection implements JourneyDao{
 
     CopyOnWriteArrayList<Journey> journeys = new CopyOnWriteArrayList<>();
 
@@ -39,6 +42,17 @@ public class JourneyDaoCollection implements GenericInterface<Journey>{
                 journeys.set(journeys.indexOf(journey),journey);
             }
         }
+    }
+
+    @Override
+    public List<Journey> getJourneyByUser(User user) {
+        List<Journey> journeyss = new ArrayList<>();
+        for (Journey j : journeys) {
+            if (j.getUserId()==user.getId()) {
+                journeyss.add(j);
+            }
+        }
+        return journeyss;
     }
 
     public JourneyDaoCollection() {

@@ -6,9 +6,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-        </sourceRoots>
       </configuration>
     </facet>
   </component>
@@ -26,5 +23,15 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-api:8.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sun.mail:javax.mail:1.6.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: mysql:mysql-connector-java:5.1.38" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.persistence:eclipselink:2.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.persistence:javax.persistence:2.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.persistence:commonj.sdo:2.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa.modelgen.processor:2.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.persistence:org.eclipse.persistence.core:2.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.persistence:org.eclipse.persistence.asm:2.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa:2.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.persistence:org.eclipse.persistence.antlr:2.5.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.persistence:org.eclipse.persistence.jpa.jpql:2.5.2" level="project" />
   </component>
 </module>
