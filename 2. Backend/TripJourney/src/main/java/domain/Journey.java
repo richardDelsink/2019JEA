@@ -22,12 +22,11 @@ public class Journey implements Serializable {
     private String journeyName;
     private String journeySummary;
     private Date startDate;
-    private LocalDate endDate;
+    private Date endDate;
     private String whoCanSee;
     private int userId;
 
-    public Journey(int journeyId, String journeyName, String journeySummary, Date startDate, LocalDate endDate, String whoCanSee, int userId) {
-        this.journeyId = journeyId;
+    public Journey(String journeyName, String journeySummary, Date startDate, Date endDate, String whoCanSee, int userId) {
         this.journeyName = journeyName;
         this.journeySummary = journeySummary;
         this.startDate = startDate;
@@ -68,11 +67,11 @@ public class Journey implements Serializable {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

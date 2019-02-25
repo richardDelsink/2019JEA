@@ -2,6 +2,7 @@ package dao;
 
 import domain.User;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import java.util.List;
@@ -66,8 +67,14 @@ public class UserDaoCollection implements UserDao{
         }
         return false;
     }
+    public int Count(){
+        return users.size();
+    }
 
+    @PostConstruct
+    private void init(){
+        // System.out.println("StudentDaoColl");
+    }
     public UserDaoCollection(){
-
     }
 }

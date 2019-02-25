@@ -5,10 +5,8 @@ import service.UserService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.resource.spi.SecurityPermission;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import javax.xml.ws.WebServiceContext;
 import java.security.Principal;
 import java.util.List;
 

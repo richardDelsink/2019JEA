@@ -14,7 +14,8 @@ import java.util.List;
 @Stateless @JPA
 public class UserDaoJpa implements UserDao{
 
-    @PersistenceContext(unitName = "userPU")
+    //@PersistenceContext(unitName = "userPU")
+    @PersistenceContext
     private EntityManager em;
 
     public UserDaoJpa() {

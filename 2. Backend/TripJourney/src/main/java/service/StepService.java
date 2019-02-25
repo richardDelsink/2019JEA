@@ -46,4 +46,18 @@ public class StepService {
         }
         return stepDao.likeStep(s, user);
     }
+
+    public Step unlikeStep(User user, int stepId) throws NotFoundException {
+        Step s = stepDao.findStepById(stepId);
+
+        if (s == null) {
+            throw new NotFoundException("Step does not exist");
+        }
+
+        if (!s.getLike().contains(user)) {
+            throw new NotFoundException("User didn't like this step");
+        }
+
+        return stepDao.unlikeStep(s, user);
+    }
 }

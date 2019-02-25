@@ -1,4 +1,5 @@
 package daoTest;
+
 import dao.UserDaoJpa;
 import domain.User;
 import org.junit.After;
@@ -10,28 +11,28 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-public class UserDaoJpaT {
+public class UserDaoJpaTest {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("UserDaoTestPU");
     private EntityManager em;
     private EntityTransaction tx;
     private UserDaoJpa userDao;
 
-    public UserDaoJpaT() {
-    }
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         try {
             new DatabaseCleaner(emf.createEntityManager()).clean();
         } catch (SQLException ex) {
-            Logger.getLogger(UserDaoJpaT.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDaoJpaTest.class.getName()).log(Level.SEVERE, null, ex);
         }
         em = emf.createEntityManager();
         tx = em.getTransaction();
@@ -41,25 +42,54 @@ public class UserDaoJpaT {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws Exception {
     }
 
     @Test
-    public void findUser() {
-        User user = new User(1,"","Willem","","","","",true,"","","");
+    public void getFollowers() {
+    }
+
+    @Test
+    public void followUser() {
+    }
+
+    @Test
+    public void unfollowUser() {
+    }
+
+    @Test
+    public void login() {
+    }
+
+    @Test
+    public void add() {
+        User user = new User("","Richard","","","","",true,"","","");
+        tx.begin();
+        userDao.add(user);
+        User userObject = userDao.findByName("Richard");
+        tx.commit();
+        assertThat(userObject,is(user));
+    }
+
+    @Test
+    public void remove() {
+    }
+
+    @Test
+    public void update() {
+    }
+
+    @Test
+    public void findByName() {
+        User user = new User("","Willem","","","","",true,"","","");
         tx.begin();
         userDao.add(user);
         User userObject = userDao.findByName("Willem");
         tx.commit();
         assertThat(userObject,is(user));
     }
+
     @Test
-    public void savingUserSucceesful() {
-        User user = new User(2,"","Richard","","","","",true,"","","");
-        tx.begin();
-        userDao.add(user);
-        User userObject = userDao.findByName("Richard");
-        tx.commit();
-        assertThat(userObject,is(user));
+    public void setEm() {
     }
 }

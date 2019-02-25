@@ -27,15 +27,16 @@ public class Step implements Serializable {
     private String story;
     @OneToMany(fetch = FetchType.LAZY)
     private List<User> like;
+    private Date postDate;
 
-    public Step(int stepId,Journey journey , String location, String stepName, Date arrivalTime, String story) {
+    public Step(Journey journey , String location, String stepName, Date arrivalTime, String story) {
         this.journey = journey;
-        this.stepId = stepId;
         this.location = location;
         this.stepName = stepName;
         this.arrivalTime = arrivalTime;
         this.story = story;
         this.like = new ArrayList<>();
+        this.postDate = new Date();
     }
 
     public int getStepId() {
@@ -109,4 +110,11 @@ public class Step implements Serializable {
         this.like.remove(user);
     }
 
+    public Date getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(Date postDate) {
+        this.postDate = postDate;
+    }
 }

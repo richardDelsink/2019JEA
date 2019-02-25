@@ -79,6 +79,10 @@ public class StepDaoCollection implements StepDao {
         return null;
     }
 
+    public int Count(){
+        return steps.size();
+    }
+
     public StepDaoCollection() {
     }
 }

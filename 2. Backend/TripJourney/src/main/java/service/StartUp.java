@@ -20,7 +20,7 @@ public class StartUp {
 
     @PostConstruct
     void initTripJourney(){
-        service.addUser(new User(1,"","Richard","","","","",true,"","",""));
-        service.addUser(new User(2,"","Willem","","","","",true,"","",""));
+        service.addUser(new User("","Richard","","","","",true,"","",""));
+        service.addUser(new User("","Willem","","","","",true,"","",""));
     }
 }

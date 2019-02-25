@@ -55,6 +55,9 @@ public class JourneyDaoCollection implements JourneyDao{
         return journeyss;
     }
 
+    public int Count(){
+        return journeys.size();
+    }
     public JourneyDaoCollection() {
     }
 }

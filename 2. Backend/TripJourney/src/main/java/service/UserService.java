@@ -20,16 +20,25 @@ public class UserService {
     private UserDao userDao;
 
     public void addUser(User user) {
-        userDao.add(user);
+        if(user != null)
+        {
+            userDao.add(user);
+        }
     }
 
     public void removeUser(User user){
-        userDao.remove(user);
+        if(user != null)
+        {
+            userDao.remove(user);
+        }
     }
 
     public void removeUser(String name) {
         User user = userDao.findByName(name);
-        userDao.remove(user);
+        if(user !=null)
+        {
+            userDao.remove(user);
+        }
     }
 
     public User findByName(String name){
