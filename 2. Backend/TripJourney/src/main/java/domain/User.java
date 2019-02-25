@@ -41,7 +41,8 @@ public class User implements Serializable {
     private List<User> following;
     private String password;
 
-    public User(String photo, String name, String city, String about, String email, String personalLink, Boolean privacy, String distance, String temperature, String password) {
+    public User(int id, String photo, String name, String city, String about, String email, String personalLink, Boolean privacy, String distance, String temperature, String password) {
+        this.id = id;
         this.photo = photo;
         this.name = name;
         this.city = city;
@@ -164,7 +165,7 @@ public class User implements Serializable {
         }
         this.following.remove(user);
     }
-
+    
 }
 
 

@@ -63,7 +63,7 @@ public class UserDaoJpaTest {
 
     @Test
     public void add() {
-        User user = new User("","Richard","","","","",true,"","","");
+        User user = new User(1,"","Richard","","","","",true,"","","");
         tx.begin();
         userDao.add(user);
         User userObject = userDao.findByName("Richard");
@@ -81,7 +81,7 @@ public class UserDaoJpaTest {
 
     @Test
     public void findByName() {
-        User user = new User("","Willem","","","","",true,"","","");
+        User user = new User(1,"","Willem","","","","",true,"","","");
         tx.begin();
         userDao.add(user);
         User userObject = userDao.findByName("Willem");

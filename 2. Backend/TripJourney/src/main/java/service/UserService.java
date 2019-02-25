@@ -3,9 +3,11 @@ package service;
 import dao.JPA;
 import dao.UserDao;
 import domain.User;
+import interceptor.LoggingInterceptor;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 import javax.ws.rs.NotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -14,10 +16,12 @@ import java.util.Base64;
 import java.util.List;
 
 @Stateless
+@Interceptors(LoggingInterceptor.class)
 public class UserService {
 
-    @Inject @JPA
+    @Inject
     private UserDao userDao;
+
 
     public void addUser(User user) {
         if(user != null)

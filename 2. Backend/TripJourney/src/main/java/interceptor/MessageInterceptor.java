@@ -15,10 +15,10 @@ public class MessageInterceptor {
         Comment comment = (Comment) objects[0];
         String message = comment.getComment();
 
-        message = message.replaceAll("vet", "hard");
+        String message1 = message.replaceAll("vet", "hard");
         message = message.replaceAll("cool", "dik");
-
-        comment.setComment(message);
+        System.out.println("Logging: name = " +message1 );
+        comment.setComment(message1);
 
         objects[0] = comment;
 

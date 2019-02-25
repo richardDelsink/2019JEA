@@ -26,14 +26,14 @@ public class StepDaoCollectionTest {
     @Before
     public void setUp() throws Exception {
         stepDaoColl = new StepDaoCollection();
-        user = new User("","Willem","","","","",true,"","","");
-        user1 = new User("","Willem2","","","","",true,"","","");
+        user = new User(1,"","Willem","","","","",true,"","","");
+        user1 = new User(2,"","Willem2","","","","",true,"","","");
         int noOfDays = 14;
         Calendar cal = Calendar.getInstance();
         Date startdate = cal.getTime();
         cal.add(Calendar.DAY_OF_YEAR, noOfDays);
         Date date = cal.getTime();
-        journey = new Journey("Canada","So hot",startdate,date,"Friends",0);
+        journey = new Journey("Canada","So hot",startdate,date,"Friends",1);
         step = new Step(journey,"Mont","Test",startdate,"There is no story");
         step1 = new Step(journey,"Mont2","Test2",date,"There is no story2");
     }

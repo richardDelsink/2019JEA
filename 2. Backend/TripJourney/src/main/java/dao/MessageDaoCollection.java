@@ -3,9 +3,13 @@ package dao;
 import domain.Comment;
 import domain.Step;
 import domain.User;
+import interceptor.Add;
+import interceptor.MessageInterceptor;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
+import javax.interceptor.Interceptor;
+import javax.interceptor.Interceptors;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -50,6 +54,8 @@ public class MessageDaoCollection implements MessageDao {
         }
         return c;
     }
+
+
 
     @Override
     public void add(Comment comment) {

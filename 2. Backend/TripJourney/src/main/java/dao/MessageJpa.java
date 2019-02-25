@@ -3,8 +3,10 @@ package dao;
 import domain.Comment;
 import domain.Step;
 import domain.User;
+import interceptor.MessageInterceptor;
 
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -32,6 +34,7 @@ public class MessageJpa implements MessageDao{
     }
 
     @Override
+    @Interceptors(MessageInterceptor.class)
     public void add(Comment comment) {
         em.persist(comment);
     }

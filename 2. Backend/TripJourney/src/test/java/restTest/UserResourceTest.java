@@ -42,7 +42,7 @@ public class UserResourceTest {
     @Test
     public void createUser() {
         String mediaType = MediaType.APPLICATION_JSON;
-        User user = new User("","Willem","","","","",true,"","","");
+        User user = new User(1,"","Willem","","","","",true,"","","");
 
         final Entity<User> entity = Entity.entity(user, mediaType);
         User usr = this.root.request().post(entity, User.class);

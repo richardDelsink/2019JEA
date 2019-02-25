@@ -26,7 +26,7 @@ public class JourneyDaoCollectionTest {
     @Before
     public void setUp() throws Exception {
         journeyDaoColl = new JourneyDaoCollection();
-        user = new User("","Willem","","","","",true,"","","");
+        user = new User(1,"","Willem","","","","",true,"","","");
         int noOfDays = 14;
         Calendar cal = Calendar.getInstance();
         Date startdate = cal.getTime();

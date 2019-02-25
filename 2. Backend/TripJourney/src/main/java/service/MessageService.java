@@ -4,9 +4,11 @@ import dao.JPA;
 import dao.MessageDao;
 import domain.Comment;
 import domain.Step;
+import interceptor.MessageInterceptor;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 import java.util.List;
 
 @Stateless
@@ -15,8 +17,8 @@ public class MessageService {
     @Inject @JPA
     private MessageDao commentDao;
 
+    @Interceptors(MessageInterceptor.class)
     public void addComment(Comment comment){
-
         commentDao.add(comment);
     }
 
