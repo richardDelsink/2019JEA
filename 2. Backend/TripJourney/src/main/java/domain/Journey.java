@@ -7,14 +7,11 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name = "Journey")
 @NamedQueries({
         @NamedQuery(name = "journey.getJourneyByUser", query = "SELECT j FROM Journey j WHERE j.userId = :userId"),
         @NamedQuery(name = "journey.journey.findByName", query = "SELECT j FROM Journey j WHERE j.journeyName = :name")
        })
-
-@XmlRootElement
-public class Journey implements Serializable {
+public class Journey implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +30,9 @@ public class Journey implements Serializable {
         this.endDate = endDate;
         this.whoCanSee = whoCanSee;
         this.userId = userId;
+    }
+
+    public Journey() {
     }
 
     public int getJourneyId() {

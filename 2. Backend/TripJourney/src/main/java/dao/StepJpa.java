@@ -14,7 +14,7 @@ import java.util.List;
 @JPA
 public class StepJpa implements StepDao{
 
-    @PersistenceContext(unitName = "stepPU")
+    @PersistenceContext(unitName = "t")
     private EntityManager em;
 
     public StepJpa() {

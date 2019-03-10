@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Richard
+Built-By: rdric
 Created-By: IntelliJ IDEA
 Build-Jdk: 1.8
 

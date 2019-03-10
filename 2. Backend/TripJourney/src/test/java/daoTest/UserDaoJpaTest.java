@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 
 public class UserDaoJpaTest {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("UserDaoTestPU");
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("Journey");
     private EntityManager em;
     private EntityTransaction tx;
     private UserDaoJpa userDao;
@@ -63,7 +63,7 @@ public class UserDaoJpaTest {
 
     @Test
     public void add() {
-        User user = new User(1,"","Richard","","","","",true,"","","");
+        User user = new User("","Richard","","","","",true,"","","");
         tx.begin();
         userDao.add(user);
         User userObject = userDao.findByName("Richard");
@@ -81,7 +81,7 @@ public class UserDaoJpaTest {
 
     @Test
     public void findByName() {
-        User user = new User(1,"","Willem","","","","",true,"","","");
+        User user = new User("","Willem","","","","",true,"","","");
         tx.begin();
         userDao.add(user);
         User userObject = userDao.findByName("Willem");

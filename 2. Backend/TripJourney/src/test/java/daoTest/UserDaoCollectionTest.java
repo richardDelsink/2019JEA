@@ -24,10 +24,10 @@ public class UserDaoCollectionTest {
     @Before
     public void setUp() throws Exception {
         userDaoColl = new UserDaoCollection();
-        user = new User(1,"","Willem","","","","",true,"","","");
-        user1 = new User(2,"","Wesley","","","","",true,"","","");
-        user2 = new User(3,"","Frank","","","","",true,"","","");
-        user3 = new User(4,"","Richard","","","","",true,"","","");
+        user = new User("","Willem","","","","",true,"","","");
+        user1 = new User("","Wesley","","","","",true,"","","");
+        user2 = new User("","Frank","","","","",true,"","","");
+        user3 = new User("","Richard","","","","",true,"","","");
 
     }
 

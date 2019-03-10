@@ -14,8 +14,7 @@ import java.util.List;
 @Stateless @JPA
 public class UserDaoJpa implements UserDao{
 
-    //@PersistenceContext(unitName = "userPU")
-    @PersistenceContext
+    @PersistenceContext(unitName = "t")
     private EntityManager em;
 
     public UserDaoJpa() {
@@ -82,8 +81,8 @@ public class UserDaoJpa implements UserDao{
 
     @Override
     public User findByName(String name) {
-        TypedQuery<User> query = em.createNamedQuery("user.findByName", User.class);
-        query.setParameter("name", name);
+        TypedQuery<User> query = em.createNamedQuery("user.getByName", User.class);
+        query.setParameter("username", name);
         List<User> result = query.getResultList();
         return result.get(0);
     }

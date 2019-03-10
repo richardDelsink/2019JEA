@@ -19,7 +19,7 @@ import java.util.List;
 @Interceptors(LoggingInterceptor.class)
 public class UserService {
 
-    @Inject
+    @Inject @JPA
     private UserDao userDao;
 
 

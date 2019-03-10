@@ -16,7 +16,7 @@ import java.util.List;
 @Stateless @JPA
 public class MessageJpa implements MessageDao{
 
-    @PersistenceContext(unitName = "commentPU")
+    @PersistenceContext(unitName = "t")
     private EntityManager em;
 
     @Override

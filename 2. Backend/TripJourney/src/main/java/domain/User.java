@@ -10,18 +10,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user")
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
-        @NamedQuery(name = "User.getFollowing", query = "SELECT u FROM User u WHERE :user MEMBER OF u.following"),
+        @NamedQuery(name = "user.getFollowing", query = "SELECT u FROM User u WHERE :user MEMBER OF u.following"),
         @NamedQuery(name = "user.getByName", query = "SELECT u FROM User u WHERE u.name = :username"),
-        @NamedQuery(name = "user.getLogin", query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password")})
-
-
+        @NamedQuery(name = "user.getLogin", query = "SELECT u FROM User u WHERE u.name = :username AND u.password = :password")})
+@XmlRootElement
 public class User implements Serializable {
-
-    public static final String getFollowing = "User.getFollowing";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,8 +35,8 @@ public class User implements Serializable {
     private List<User> following;
     private String password;
 
-    public User(int id, String photo, String name, String city, String about, String email, String personalLink, Boolean privacy, String distance, String temperature, String password) {
-        this.id = id;
+    public User(){}
+    public User(String photo, String name, String city, String about, String email, String personalLink, Boolean privacy, String distance, String temperature, String password) {
         this.photo = photo;
         this.name = name;
         this.city = city;

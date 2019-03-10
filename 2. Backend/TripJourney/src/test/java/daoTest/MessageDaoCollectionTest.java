@@ -33,8 +33,8 @@ public class MessageDaoCollectionTest {
     public void setUp() throws Exception {
         messageDaoColl = new MessageDaoCollection();
         stepDaoColl = new StepDaoCollection();
-        user = new User(1,"","Willem","","","","",true,"","","");
-        user1 = new User(2,"","Willem2","","","","",true,"","","");
+        user = new User("","Willem","","","","",true,"","","");
+        user1 = new User("","Willem2","","","","",true,"","","");
         int noOfDays = 14;
         Calendar cal = Calendar.getInstance();
         Date startdate = cal.getTime();

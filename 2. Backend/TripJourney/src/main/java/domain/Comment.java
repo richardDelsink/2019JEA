@@ -7,7 +7,6 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "Comment")
 @NamedQueries({
         @NamedQuery(name = "comment.getCommentsByStep", query = "SELECT c FROM Comment c WHERE c.stepId = :stepId"),
         @NamedQuery(name = "comment.getCommentsByUser", query = "SELECT c FROM Comment c WHERE c.userId = :userId"),

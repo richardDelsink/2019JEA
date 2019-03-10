@@ -13,12 +13,12 @@ import java.util.List;
 @JPA
 public class JourneyDaoJpa implements JourneyDao{
 
-    @PersistenceContext(unitName = "journeyPU")
+    @PersistenceContext(unitName = "t")
     private EntityManager em;
 
     @Override
     public List<Journey> getJourneyByUser(User user) {
-        TypedQuery<Journey> query = em.createNamedQuery("journery.getJourneyByUser", Journey.class);
+        TypedQuery<Journey> query = em.createNamedQuery("journey.getJourneyByUser", Journey.class);
         query.setParameter("userId", user.getId());
         return query.getResultList();
     }

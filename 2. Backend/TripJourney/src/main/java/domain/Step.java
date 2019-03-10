@@ -8,11 +8,9 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Step")
-
 @NamedQueries({
-        @NamedQuery(name = "step.getStepsByJourney", query = "SELECT s FROM Step s WHERE s.jouney = :journey"),
-        @NamedQuery(name = "step.findByName", query = "SELECT s FROM Step s WHERE s.name = :name")})
+        @NamedQuery(name = "step.getStepsByJourney", query = "SELECT s FROM Step s WHERE s.journey = :journey"),
+        @NamedQuery(name = "step.findByName", query = "SELECT s FROM Step s WHERE s.stepName = :name")})
 
 @XmlRootElement
 public class Step implements Serializable {
@@ -20,6 +18,7 @@ public class Step implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int stepId;
+    @JoinTable
     private Journey journey;
     private String location;
     private String stepName;
@@ -28,6 +27,9 @@ public class Step implements Serializable {
     @OneToMany(fetch = FetchType.LAZY)
     private List<User> like;
     private Date postDate;
+
+    public Step(){
+    }
 
     public Step(Journey journey , String location, String stepName, Date arrivalTime, String story) {
         this.journey = journey;
