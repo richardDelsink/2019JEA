@@ -1,6 +1,6 @@
 package interceptor;
 
-import domain.Comment;
+import domain.Message;
 
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
@@ -12,7 +12,7 @@ public class MessageInterceptor {
     @AroundInvoke
     public Object replaceMethod(InvocationContext context) throws Exception {
         Object[] objects = context.getParameters();
-        Comment comment = (Comment) objects[0];
+        Message comment = (Message) objects[0];
         String message = comment.getComment();
 
         String message1 = message.replaceAll("vet", "hard");

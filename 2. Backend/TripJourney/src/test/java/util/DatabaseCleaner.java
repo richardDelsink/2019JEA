@@ -1,5 +1,8 @@
 package util;
 
+import domain.Journey;
+import domain.Message;
+import domain.Step;
 import domain.User;
 
 import javax.persistence.EntityManager;
@@ -8,6 +11,9 @@ import java.sql.SQLException;
 
 public class DatabaseCleaner {
     private static final Class<?>[] ENTITY_TYPES = {
+            Message.class,
+            Step.class,
+            Journey.class,
             User.class
     };
     private final EntityManager em;

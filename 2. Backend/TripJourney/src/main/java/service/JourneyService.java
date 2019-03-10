@@ -35,4 +35,7 @@ public class JourneyService {
     public List<Journey> findByUsername(User user) {
         return journeyDao.getJourneyByUser(user);
     }
+
+    public JourneyService() {
+    }
 }

@@ -1,6 +1,6 @@
 package dao;
 
-import domain.Comment;
+import domain.Message;
 import domain.Step;
 import domain.User;
 import interceptor.MessageInterceptor;
@@ -19,41 +19,48 @@ public class MessageJpa implements MessageDao{
     @PersistenceContext(unitName = "t")
     private EntityManager em;
 
+    public MessageJpa() {
+    }
+
     @Override
-    public List<Comment> getComments(User user) {
-        TypedQuery<Comment> query = em.createNamedQuery("comment.getCommentsByUser", Comment.class);
+    public List<Message> getComments(User user) {
+        TypedQuery<Message> query = em.createNamedQuery("comment.getCommentsByUser", Message.class);
         query.setParameter("userId", user.getId());
         return query.getResultList();
     }
 
     @Override
-    public List<Comment> getCommentsByStep(Step step) {
-        TypedQuery<Comment> query = em.createNamedQuery("comment.getCommentsByStep", Comment.class);
+    public List<Message> getCommentsByStep(Step step) {
+        TypedQuery<Message> query = em.createNamedQuery("comment.getCommentsByStep", Message.class);
         query.setParameter("stepId", step.getStepId());
         return query.getResultList();
     }
 
     @Override
     @Interceptors(MessageInterceptor.class)
-    public void add(Comment comment) {
+    public void add(Message comment) {
         em.persist(comment);
     }
 
     @Override
-    public void remove(Comment comment) {
+    public void remove(Message comment) {
         em.remove(em.merge(comment));
     }
 
     @Override
-    public void update(Comment comment) {
+    public void update(Message comment) {
         em.merge(comment);
     }
 
     @Override
-    public Comment findByName(String name) {
-        TypedQuery<Comment> query = em.createNamedQuery("comment.findByName", Comment.class);
+    public Message findByName(String name) {
+        TypedQuery<Message> query = em.createNamedQuery("comment.findByName", Message.class);
         query.setParameter("name", name);
-        List<Comment> result = query.getResultList();
+        List<Message> result = query.getResultList();
         return result.get(0);
+    }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
     }
 }

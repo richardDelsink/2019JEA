@@ -71,12 +71,13 @@ public class UserService {
 
     public void followUser(User user, String username)throws NotFoundException {
         User toFollow = userDao.findByName(username);
+        User user1 = userDao.findByName("Richard");
 
         if (toFollow == null) {
             throw new NotFoundException("User " + username + " was not found");
         }
 
-        userDao.followUser(user, toFollow);
+        userDao.followUser(user1, toFollow);
     }
     public void unfollowUser(User user, String username)throws NotFoundException{
         User toUnfollow = userDao.findByName(username);

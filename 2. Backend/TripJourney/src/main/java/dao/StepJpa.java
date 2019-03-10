@@ -69,4 +69,8 @@ public class StepJpa implements StepDao{
         List<Step> result = query.getResultList();
         return result.get(0);
     }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
 }

@@ -2,7 +2,7 @@ package service;
 
 import dao.JPA;
 import dao.MessageDao;
-import domain.Comment;
+import domain.Message;
 import domain.Step;
 import interceptor.MessageInterceptor;
 
@@ -18,26 +18,26 @@ public class MessageService {
     private MessageDao commentDao;
 
     @Interceptors(MessageInterceptor.class)
-    public void addComment(Comment comment){
+    public void addComment(Message comment){
         commentDao.add(comment);
     }
 
-    public void removeComment(Comment comment){
+    public void removeComment(Message comment){
 
         commentDao.remove(comment);
     }
 
     public void removeComment(String name) {
-        Comment comment = commentDao.findByName(name);
+        Message comment = commentDao.findByName(name);
         commentDao.remove(comment);
     }
 
-    public Comment findByName(String name){
+    public Message findByName(String name){
 
         return commentDao.findByName(name);
     }
 
-    public List<Comment> findByStep(Step step) {
+    public List<Message> findByStep(Step step) {
 
         return commentDao.getCommentsByStep(step);
     }

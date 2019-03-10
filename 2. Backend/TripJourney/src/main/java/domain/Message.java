@@ -8,25 +8,25 @@ import java.util.Date;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "comment.getCommentsByStep", query = "SELECT c FROM Comment c WHERE c.stepId = :stepId"),
-        @NamedQuery(name = "comment.getCommentsByUser", query = "SELECT c FROM Comment c WHERE c.userId = :userId"),
-        @NamedQuery(name = "comment.findByName", query = "SELECT c FROM Comment c WHERE c.comment = :name")})
-
+        @NamedQuery(name = "comment.getCommentsByStep", query = "SELECT c FROM Message c WHERE c.stepId = :stepId"),
+        @NamedQuery(name = "comment.getCommentsByUser", query = "SELECT c FROM Message c WHERE c.userId = :userId"),
+        @NamedQuery(name = "comment.findByName", query = "SELECT c FROM Message c WHERE c.comment = :name")})
 @XmlRootElement
-public class Comment implements Serializable {
+public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String commentId;
+    private int commentId;
     private int stepId;
     private int userId;
     private String comment;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date postDate;
 
-    public Comment() {
+    public Message() {
     }
 
-    public Comment(int stepId, int userId, String comment) {
+    public Message(int stepId, int userId, String comment) {
         this.stepId = stepId;
         this.userId = userId;
         this.comment = comment;
@@ -34,11 +34,11 @@ public class Comment implements Serializable {
     }
 
 
-    public String getCommentId() {
+    public int getCommentId() {
         return commentId;
     }
 
-    public void setCommentId(String commentId) {
+    public void setCommentId(int commentId) {
         this.commentId = commentId;
     }
 
@@ -50,7 +50,7 @@ public class Comment implements Serializable {
         this.stepId = stepId;
     }
 
-    public void setMessageId(String messageId) {
+    public void setMessageId(int messageId) {
         this.commentId = messageId;
     }
 

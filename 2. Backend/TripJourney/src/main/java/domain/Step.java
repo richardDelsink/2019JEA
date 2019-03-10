@@ -1,5 +1,7 @@
 package domain;
 
+
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -18,14 +20,16 @@ public class Step implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int stepId;
-    @JoinTable
+    @ManyToOne
     private Journey journey;
     private String location;
     private String stepName;
+    @Temporal(TemporalType.DATE)
     private Date arrivalTime;
     private String story;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany()
     private List<User> like;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date postDate;
 
     public Step(){

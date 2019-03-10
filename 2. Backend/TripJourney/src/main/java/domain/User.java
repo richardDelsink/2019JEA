@@ -31,7 +31,7 @@ public class User implements Serializable {
     private Boolean privacy;
     private String distance;
     private String temperature;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany()
     private List<User> following;
     private String password;
 
@@ -145,6 +145,7 @@ public class User implements Serializable {
     public void setFollowing(List<User> following) {
         this.following = following;
     }
+
     public void followUser(User user) throws IllegalArgumentException {
         if (this.following.contains(user)) {
             throw new IllegalArgumentException("User already follows this user");

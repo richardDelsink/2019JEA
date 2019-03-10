@@ -9,12 +9,15 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@Stateless
-@JPA
+
+@Stateless @JPA
 public class JourneyDaoJpa implements JourneyDao{
 
     @PersistenceContext(unitName = "t")
     private EntityManager em;
+
+    public JourneyDaoJpa() {
+    }
 
     @Override
     public List<Journey> getJourneyByUser(User user) {
@@ -44,5 +47,9 @@ public class JourneyDaoJpa implements JourneyDao{
         query.setParameter("name", name);
         List<Journey> result = query.getResultList();
         return result.get(0);
+    }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
     }
 }

@@ -2,16 +2,14 @@ package daoTest;
 
 import dao.MessageDaoCollection;
 import dao.StepDaoCollection;
-import domain.Comment;
+import domain.Message;
 import domain.Journey;
 import domain.Step;
 import domain.User;
-import interceptor.MessageInterceptor;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.interceptor.Interceptors;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -22,8 +20,8 @@ public class MessageDaoCollectionTest {
 
     private StepDaoCollection stepDaoColl;
     private MessageDaoCollection messageDaoColl;
-    private Comment comment;
-    private Comment comment1;
+    private Message comment;
+    private Message comment1;
     private User user;
     private Step step;
     private Journey journey;
@@ -42,8 +40,8 @@ public class MessageDaoCollectionTest {
         Date date = cal.getTime();
         journey = new Journey("Canada","So hot",startdate,date,"Friends",2);
         step = new Step(journey,"Mont","Test",startdate,"There is no story");
-        comment = new Comment(0,1,"vet goede spull te zien");
-        comment1 = new Comment(0,2,"vet");
+        comment = new Message(0,1,"vet goede spull te zien");
+        comment1 = new Message(0,2,"vet");
     }
 
     @After

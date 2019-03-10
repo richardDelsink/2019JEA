@@ -70,7 +70,6 @@ public class UserDaoJpa implements UserDao{
 
     @Override
     public void remove(User user) {
-
         em.remove(em.merge(user));
     }
 

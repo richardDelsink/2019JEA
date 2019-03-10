@@ -1,6 +1,6 @@
 package rest;
 
-import domain.Comment;
+import domain.Message;
 import domain.Step;
 import service.MessageService;
 import service.StepService;
@@ -11,7 +11,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("Comment")
+@Path("Message")
 @Stateless
 public class MessageResource {
 
@@ -24,21 +24,21 @@ public class MessageResource {
     @GET
     @Path("{messagecontext}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Comment getComment(@PathParam("messagecontext") String messagecontext) {
+    public Message getComment(@PathParam("messagecontext") String messagecontext) {
         return mS.findByName(messagecontext);
     }
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public Comment createComment(Comment comment) {
+    public Message createComment(Message comment) {
         mS.addComment(comment);
         return comment;
     }
     @GET
     @Path("search/{comments}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Comment> getCommentByStep(@PathParam("comments") String name) {
+    public List<Message> getCommentByStep(@PathParam("comments") String name) {
         Step step = sS.findByName(name);
         return mS.findByStep(step);
     }

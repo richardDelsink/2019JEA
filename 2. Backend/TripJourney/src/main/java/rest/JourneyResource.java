@@ -21,7 +21,7 @@ public class JourneyResource {
     private UserService uS;
 
     @GET
-    @Path("{journeyname}")
+    @Path("get/{journeyname}")
     @Produces(MediaType.APPLICATION_JSON)
     public Journey getJourney(@PathParam("journeyname") String name) {
         return jS.findByName(name);
@@ -42,7 +42,7 @@ public class JourneyResource {
         return jS.findByUsername(user);
     }
     @DELETE
-    @Path("{name}")
+    @Path("/delete/{name}")
     public void deleteJourney(@PathParam("name")String name) {
         jS.removeJourney(name);
     }

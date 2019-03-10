@@ -1,12 +1,12 @@
 package dao;
 
-import domain.Comment;
+import domain.Message;
 import domain.Step;
 import domain.User;
 
 import java.util.List;
 
-public interface MessageDao extends GenericInterface<Comment> {
-    List<Comment> getComments(User user);
-    List<Comment> getCommentsByStep(Step step);
+public interface MessageDao extends GenericInterface<Message> {
+    List<Message> getComments(User user);
+    List<Message> getCommentsByStep(Step step);
 }

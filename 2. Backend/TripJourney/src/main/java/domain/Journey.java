@@ -9,8 +9,9 @@ import java.util.Date;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "journey.getJourneyByUser", query = "SELECT j FROM Journey j WHERE j.userId = :userId"),
-        @NamedQuery(name = "journey.journey.findByName", query = "SELECT j FROM Journey j WHERE j.journeyName = :name")
+        @NamedQuery(name = "journey.findByName", query = "SELECT j FROM Journey j WHERE j.journeyName = :name")
        })
+@XmlRootElement
 public class Journey implements Serializable{
 
     @Id
@@ -18,7 +19,9 @@ public class Journey implements Serializable{
     private int  journeyId;
     private String journeyName;
     private String journeySummary;
+    @Temporal(TemporalType.DATE)
     private Date startDate;
+    @Temporal(TemporalType.DATE)
     private Date endDate;
     private String whoCanSee;
     private int userId;

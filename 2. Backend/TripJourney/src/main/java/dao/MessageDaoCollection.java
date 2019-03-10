@@ -1,33 +1,28 @@
 package dao;
 
-import domain.Comment;
+import domain.Message;
 import domain.Step;
 import domain.User;
-import interceptor.Add;
-import interceptor.MessageInterceptor;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
-import javax.interceptor.Interceptor;
-import javax.interceptor.Interceptors;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Stateless
 @Default
 public class MessageDaoCollection implements MessageDao {
 
-    CopyOnWriteArrayList<Comment> comments = new CopyOnWriteArrayList<>();
+    CopyOnWriteArrayList<Message> comments = new CopyOnWriteArrayList<>();
 
     @Override
-    public void remove(Comment comment) {
+    public void remove(Message comment) {
         comments.remove(comment);
     }
 
     @Override
-    public Comment findByName(String name) {
-        for (Comment comment : comments) {
+    public Message findByName(String name) {
+        for (Message comment : comments) {
             if (comment.getComment().contentEquals(name)) {
                 return comment;
             }
@@ -36,8 +31,8 @@ public class MessageDaoCollection implements MessageDao {
     }
 
     @Override
-    public void update(Comment comment) {
-        for (Comment c : comments) {
+    public void update(Message comment) {
+        for (Message c : comments) {
             if (c.getCommentId()==(comment.getCommentId())) {
                 comments.set(comments.indexOf(comment),comment);
             }
@@ -45,9 +40,9 @@ public class MessageDaoCollection implements MessageDao {
     }
 
     @Override
-    public ArrayList<Comment> getComments(User user) {
-        ArrayList<Comment> c = new ArrayList<>();
-        for (Comment comment : comments) {
+    public ArrayList<Message> getComments(User user) {
+        ArrayList<Message> c = new ArrayList<>();
+        for (Message comment : comments) {
             if (comment.getUserId()== user.getId()) {
                 c.add(comment);
             }
@@ -58,14 +53,14 @@ public class MessageDaoCollection implements MessageDao {
 
 
     @Override
-    public void add(Comment comment) {
+    public void add(Message comment) {
         comments.add(comment);
     }
 
     @Override
-    public ArrayList<Comment> getCommentsByStep(Step step) {
-        ArrayList<Comment> commentList = new ArrayList<>();
-        for (Comment comment : comments) {
+    public ArrayList<Message> getCommentsByStep(Step step) {
+        ArrayList<Message> commentList = new ArrayList<>();
+        for (Message comment : comments) {
             if (comment.getStepId() == step.getStepId()) {
                 commentList.add(comment);
             }
