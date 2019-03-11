@@ -6,7 +6,9 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import util.JourneyJson;
 
 import java.util.Calendar;
@@ -16,6 +18,7 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.config.EncoderConfig.encoderConfig;
 import static org.junit.Assert.*;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JourneyRestAssureTest {
 
     @Before
@@ -56,10 +59,9 @@ public class JourneyRestAssureTest {
                 given().
                     contentType("application/json").
                     body(journey).
-                    log().all().
                 when().
                     post("/Journey").then().
-                statusCode(500);
+                statusCode(204);
     }
 
     @Test
@@ -69,7 +71,7 @@ public class JourneyRestAssureTest {
                 pathParam("name", "Willem").
                 when().
                 get("/Journey/search/{name}").
-                then().log().all().
+                then().
                 statusCode(200);
     }
 
@@ -79,7 +81,7 @@ public class JourneyRestAssureTest {
                 pathParam("name", "Canada").
                 when().
                 delete("/Journey/delete/{name}").
-                then().log().all().
-                statusCode(500);
+                then().
+                statusCode(204);
     }
 }

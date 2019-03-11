@@ -24,8 +24,8 @@ public class UserService {
     @Inject @JPA
     private UserDao userDao;
 
-    @Inject
-    private Event<UserEvent> userEvent;
+    /*@Inject
+    private Event<UserEvent> userEvent;*/
 
     public void addUser(User user) {
         if(user != null)
@@ -107,9 +107,9 @@ public class UserService {
         }
     }
 
-    public void addUserEvent(User user) {
+   /* public void addUserEvent(User user) {
         userEvent.fire(new UserEvent(user));
-    }
+    }*/
     public UserService(){
 
     }

@@ -36,7 +36,7 @@ public class StepRestAssureTest {
                 pathParam("name", "Willem").
                 when().
                 get("/Step/search/{name}").
-                then().log().all().
+                then().
                 statusCode(500);
     }
 
@@ -46,7 +46,7 @@ public class StepRestAssureTest {
                 pathParam("name", "Timboektoe").
                 when().
                 delete("/Step/{name}").
-                then().log().ifError().
+                then().
                 statusCode(500);
     }
 

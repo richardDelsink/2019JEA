@@ -88,10 +88,10 @@ public class UserDaoJpa implements UserDao{
         return result.get(0);
     }
 
-    public void addUserEvent(@Observes UserEvent event){
+    /*public void addUserEvent(@Observes UserEvent event){
         User user = event.getUser();
         em.persist(user);
-    }
+    }*/
     public void setEm(EntityManager em) {
         this.em = em;
     }

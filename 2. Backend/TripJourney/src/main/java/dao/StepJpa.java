@@ -72,10 +72,10 @@ public class StepJpa implements StepDao{
         return result.get(0);
     }
 
-    public void addStepEvent(@Observes StepEvent event) {
+    /*public void addStepEvent(@Observes StepEvent event) {
         Step step = event.getStep();
         em.persist(step);
-    }
+    }*/
 
     public void setEm(EntityManager em) {
         this.em = em;

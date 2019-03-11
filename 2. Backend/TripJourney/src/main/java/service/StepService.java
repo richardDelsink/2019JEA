@@ -20,8 +20,8 @@ public class StepService {
     @Inject @JPA
     private StepDao stepDao;
 
-    @Inject
-    private Event<StepEvent> stepEvent;
+    /*@Inject
+    private Event<StepEvent> stepEvent;*/
 
     public void addStep(Step step){
         stepDao.add(step);
@@ -66,8 +66,8 @@ public class StepService {
         return stepDao.unlikeStep(s, user);
     }
 
-    public void addStepEvent(Step step) {
+    /*public void addStepEvent(Step step) {
 
         stepEvent.fire(new StepEvent(step));
-    }
+    }*/
 }
