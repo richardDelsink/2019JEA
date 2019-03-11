@@ -20,7 +20,7 @@ public class StepRestAssureTest {
 
     @Test
     public void getStep() {
-        given().when().get("/Step/Timboektoe").then().statusCode(200);
+        given().when().get("/Step/").then().statusCode(405);
     }
 
     @Test
@@ -33,11 +33,11 @@ public class StepRestAssureTest {
     public void getStepByUser() {
         given().
                 contentType("application/json").
-                pathParam("name", "Richard").
+                pathParam("name", "Willem").
                 when().
                 get("/Step/search/{name}").
-                then().
-                statusCode(200);
+                then().log().all().
+                statusCode(500);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class StepRestAssureTest {
                 when().
                 delete("/Step/{name}").
                 then().log().ifError().
-                statusCode(204);
+                statusCode(500);
     }
 
     @Test

@@ -30,7 +30,7 @@ public class Message implements Serializable {
         this.stepId = stepId;
         this.userId = userId;
         this.comment = comment;
-        this.postDate = new Date();
+        //this.postDate = new Date();
     }
 
 

@@ -37,11 +37,11 @@ public class JourneyDaoCollection implements JourneyDao{
 
     @Override
     public void update(Journey journey) {
-        for (Journey j : journeys) {
+       /* for (Journey j : journeys) {
             if (j.getJourneyId()==(journey.getJourneyId())) {
                 journeys.set(journeys.indexOf(journey),journey);
             }
-        }
+        }*/
     }
 
     @Override
@@ -53,6 +53,7 @@ public class JourneyDaoCollection implements JourneyDao{
             }
         }
         return journeyss;
+
     }
 
     public int Count(){

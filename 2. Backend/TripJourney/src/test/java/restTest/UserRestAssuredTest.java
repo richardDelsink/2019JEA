@@ -26,7 +26,7 @@ public class UserRestAssuredTest {
 
     @Test
     public void getUser() {
-        given().when().get("/User/Richard").then().statusCode(200);
+        given().when().get("/User/Willem").then().statusCode(200);
     }
 
     @Test

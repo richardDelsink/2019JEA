@@ -1,5 +1,7 @@
 package domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -20,11 +22,20 @@ public class Journey implements Serializable{
     private String journeyName;
     private String journeySummary;
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd@HH:mm:ss.SSSZ", timezone="CET")
     private Date startDate;
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd@HH:mm:ss.SSSZ", timezone="CET")
     private Date endDate;
     private String whoCanSee;
     private int userId;
+
+    public Journey(String journeyName, String journeySummary, String whoCanSee, int userId) {
+        this.journeyName = journeyName;
+        this.journeySummary = journeySummary;
+        this.whoCanSee = whoCanSee;
+        this.userId = userId;
+    }
 
     public Journey(String journeyName, String journeySummary, Date startDate, Date endDate, String whoCanSee, int userId) {
         this.journeyName = journeyName;
@@ -35,16 +46,14 @@ public class Journey implements Serializable{
         this.userId = userId;
     }
 
+
+
     public Journey() {
     }
 
-    public int getJourneyId() {
+   /* public int getJourneyId() {
         return journeyId;
-    }
-
-    public void setJourneyId(int journeyId) {
-        this.journeyId = journeyId;
-    }
+    }*/
 
     public String getJourneyName() {
         return journeyName;
@@ -60,14 +69,6 @@ public class Journey implements Serializable{
 
     public void setJourneySummary(String journeySummary) {
         this.journeySummary = journeySummary;
-    }
-
-    public Date getStartDatel() {
-        return startDate;
-    }
-
-    public void setStartDatel(Date startDate) {
-        this.startDate = startDate;
     }
 
     public Date getEndDate() {
@@ -90,7 +91,5 @@ public class Journey implements Serializable{
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+
 }

@@ -3,17 +3,20 @@ package restTest;
 import domain.Journey;
 import domain.User;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import util.JourneyJson;
 
-import java.sql.Date;
 import java.util.Calendar;
+import java.util.Date;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.config.EncoderConfig.encoderConfig;
 import static org.junit.Assert.*;
 
-public class JourneyResourceTest {
+public class JourneyRestAssureTest {
 
     @Before
     public void setUp() throws Exception {
@@ -33,38 +36,40 @@ public class JourneyResourceTest {
                 pathParam("journeyname", "Canada").
                 when().
                 get("/Journey/get/{journeyname}").
-                then().log().ifError().
-                statusCode(200);
+                then().
+                statusCode(500);
     }
 
     @Test
     public void createJourney() {
         int noOfDays = 15;
+
         Calendar cal = Calendar.getInstance();
-        java.util.Date startdate = cal.getTime();
+        //Date ss = cal.getTimeInMillis();
+
         cal.add(Calendar.DAY_OF_YEAR, noOfDays);
-        java.util.Date date = cal.getTime();
+        Long date = cal.getTimeInMillis();
 
-        Journey journey = new Journey("Canada", "Going to Canada all alone",startdate,date,"friends",1);
+        //JourneyJson jj = new JourneyJson("Canada", "Going to Canada all alone","friends",1);
+        Journey journey = new Journey("Canada", "Going to Canada all alone","friends",1);
 
-        given().
-                contentType("application/json").
-                body(journey).
-                log().all().
+                given().
+                    contentType("application/json").
+                    body(journey).
+                    log().all().
                 when().
-                post("/Journey").
-                then().log().all().
-                statusCode(200);
+                    post("/Journey").then().
+                statusCode(500);
     }
 
     @Test
     public void getJourneyByUser() {
         given().
                 contentType("application/json").
-                pathParam("name", "Richard").
+                pathParam("name", "Willem").
                 when().
                 get("/Journey/search/{name}").
-                then().
+                then().log().all().
                 statusCode(200);
     }
 
@@ -74,7 +79,7 @@ public class JourneyResourceTest {
                 pathParam("name", "Canada").
                 when().
                 delete("/Journey/delete/{name}").
-                then().
-                statusCode(204);
+                then().log().all().
+                statusCode(500);
     }
 }

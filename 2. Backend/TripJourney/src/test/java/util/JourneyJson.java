@@ -1,8 +1,6 @@
 package util;
-import domain.Journey;
 
 import javax.xml.bind.annotation.XmlElement;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class JourneyJson {
@@ -14,7 +12,7 @@ public class JourneyJson {
         @XmlElement public String friends;
         @XmlElement public int userId;
 
-        public JourneyJson(String journeyName, String journeySummary, Long startDate, long date, String friends, int userId) {
+        public JourneyJson(String journeyName, String journeySummary, Long startDate, Long date, String friends, int userId) {
                 this.journeyName = journeyName;
                 this.journeySummary = journeySummary;
                 this.startDate = startDate;
@@ -22,5 +20,4 @@ public class JourneyJson {
                 this.friends = friends;
                 this.userId = userId;
         }
-
 }
