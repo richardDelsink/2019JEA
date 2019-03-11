@@ -3,8 +3,10 @@ package dao;
 import domain.Journey;
 import domain.Step;
 import domain.User;
+import event.StepEvent;
 
 import javax.ejb.Stateless;
+import javax.enterprise.event.Observes;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -68,6 +70,11 @@ public class StepJpa implements StepDao{
         query.setParameter("name", name);
         List<Step> result = query.getResultList();
         return result.get(0);
+    }
+
+    public void addStepEvent(@Observes StepEvent event) {
+        Step step = event.getStep();
+        em.persist(step);
     }
 
     public void setEm(EntityManager em) {

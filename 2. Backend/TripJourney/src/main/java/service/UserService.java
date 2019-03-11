@@ -3,9 +3,11 @@ package service;
 import dao.JPA;
 import dao.UserDao;
 import domain.User;
+import event.UserEvent;
 import interceptor.LoggingInterceptor;
 
 import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 import javax.ws.rs.NotFoundException;
@@ -22,6 +24,8 @@ public class UserService {
     @Inject @JPA
     private UserDao userDao;
 
+    @Inject
+    private Event<UserEvent> userEvent;
 
     public void addUser(User user) {
         if(user != null)
@@ -101,6 +105,10 @@ public class UserService {
         } catch (NoSuchAlgorithmException e) {
             return text;
         }
+    }
+
+    public void addUserEvent(User user) {
+        userEvent.fire(new UserEvent(user));
     }
     public UserService(){
 

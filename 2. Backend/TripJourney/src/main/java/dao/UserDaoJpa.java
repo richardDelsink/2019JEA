@@ -1,8 +1,10 @@
 package dao;
 
 import domain.User;
+import event.UserEvent;
 
 import javax.ejb.Stateless;
+import javax.enterprise.event.Observes;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -86,6 +88,10 @@ public class UserDaoJpa implements UserDao{
         return result.get(0);
     }
 
+    public void addUserEvent(@Observes UserEvent event){
+        User user = event.getUser();
+        em.persist(user);
+    }
     public void setEm(EntityManager em) {
         this.em = em;
     }
