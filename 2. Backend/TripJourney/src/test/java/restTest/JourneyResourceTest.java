@@ -50,9 +50,10 @@ public class JourneyResourceTest {
         given().
                 contentType("application/json").
                 body(journey).
+                log().all().
                 when().
                 post("/Journey").
-                then().
+                then().log().all().
                 statusCode(200);
     }
 

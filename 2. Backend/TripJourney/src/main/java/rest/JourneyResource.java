@@ -4,11 +4,14 @@ import domain.Journey;
 import domain.User;
 import service.JourneyService;
 import service.UserService;
+import util.JourneyJson;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.json.Json;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Date;
 import java.util.List;
 
 @Path("Journey")
@@ -30,7 +33,10 @@ public class JourneyResource {
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public Journey createJourney(Journey journey) {
+    public Journey createJourney(JourneyJson jj) {
+        Date startdate = new Date(jj.startdate * 1000);
+        Date enddate = new Date(jj.endate * 1000);
+        Journey journey = new Journey(jj.journeyName,jj.journeySummary,startdate,enddate,jj.whoCanSee,jj.userId);
         jS.addJourney(journey);
         return journey;
     }

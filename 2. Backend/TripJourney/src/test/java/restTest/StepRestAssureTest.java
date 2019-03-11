@@ -1,5 +1,6 @@
 package restTest;
 
+import domain.Step;
 import io.restassured.RestAssured;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +25,8 @@ public class StepRestAssureTest {
 
     @Test
     public void createStep() {
+
+
     }
 
     @Test
