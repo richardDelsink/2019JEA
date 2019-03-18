@@ -4,9 +4,9 @@ import domain.Journey;
 import domain.User;
 import service.JourneyService;
 import service.UserService;
-import util.JourneyJson;
 
 import javax.ejb.Stateless;
+import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Path("Journey")
-@Stateless
+@RequestScoped
 public class JourneyResource {
     @Inject
     private JourneyService jS;

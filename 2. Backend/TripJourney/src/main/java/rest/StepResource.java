@@ -8,6 +8,7 @@ import service.StepService;
 import service.UserService;
 
 import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -18,7 +19,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Path("Step")
-@Stateless
+@RequestScoped
 public class StepResource {
 
     @Context

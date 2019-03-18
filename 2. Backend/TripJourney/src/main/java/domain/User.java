@@ -4,10 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Objects;
 
 @Entity
 @NamedQueries({
@@ -31,7 +28,7 @@ public class User implements Serializable {
     private Boolean privacy;
     private String distance;
     private String temperature;
-    @OneToMany()
+    @ManyToMany(mappedBy = "followers")
     private List<User> following;
     private String password;
 

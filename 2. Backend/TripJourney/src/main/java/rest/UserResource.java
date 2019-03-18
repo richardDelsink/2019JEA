@@ -21,24 +21,43 @@ public class UserResource {
     private UserService uS;
 
     @GET
-    @Path("{name}")
+    @Path("get/{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUser(@PathParam("name") String name) {
-        return uS.findByName(name);
+    public Response getUser(@PathParam("name") String name) {
+        try {
+            return Response.status(Response.Status.OK).entity(new GenericEntity<User>(uS.findByName((name))) {}).build();
+        } catch (NotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        } catch(Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Something went wrong").build();
+        }
     }
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public User createUser(User user) {
-        uS.addUser(user);
-        return user;
+    public Response createUser(User user) {
+        try {
+            uS.addUser(user);
+            return Response.status(Response.Status.OK).entity("Success").build();
+        } catch (NotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        } catch(Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Something went wrong").build();
+        }
     }
 
     @DELETE
-    @Path("{name}")
-    public void deleteUser(@PathParam("name")String name) {
-        uS.removeUser(name);
+    @Path("delete/{name}")
+    public Response deleteUser(@PathParam("name")String name) {
+        try {
+            uS.removeUser(name);
+            return Response.status(Response.Status.OK).entity("Success").build();
+        } catch (NotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        } catch(Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Something went wrong").build();
+        }
     }
 
     @GET
@@ -54,14 +73,13 @@ public class UserResource {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Something went wrong").build();
         }
     }
-
+// lager in  dan de rest laag tevoegen , aanpassen
     @POST
     @Path("{username}/follow")
     public Response followUser(@PathParam("username") String username) {
         try {
             User user = getUserFromToken();
             uS.followUser(user, username);
-
             return Response.status(Response.Status.NO_CONTENT).build();
         } catch (NotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
@@ -93,7 +111,6 @@ public class UserResource {
         try {
             User user = getUserFromToken();
             uS.unfollowUser(user, username);
-
             return Response.status(Response.Status.NO_CONTENT).build();
         } catch (NotFoundException e) {
             return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();

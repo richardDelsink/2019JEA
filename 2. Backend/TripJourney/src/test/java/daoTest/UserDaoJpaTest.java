@@ -70,7 +70,7 @@ public class UserDaoJpaTest {
         tx.commit();
         assertThat(1, is(userDaoJPA.getFollowers(user1).size()));
     }
-
+// recursie problemen misschien bij follow user 1 suser 2
     @Test
     public void unfollowUser() {
         tx.begin();

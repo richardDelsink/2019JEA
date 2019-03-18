@@ -6,13 +6,14 @@ import service.MessageService;
 import service.StepService;
 
 import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("Message")
-@Stateless
+@RequestScoped
 public class MessageResource {
 
     @Inject

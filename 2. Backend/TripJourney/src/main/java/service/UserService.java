@@ -69,7 +69,6 @@ public class UserService {
         if (user == null) {
             throw new NotFoundException("User " + name + " was not found");
         }
-
         return userDao.getFollowers(user);
     }
 
